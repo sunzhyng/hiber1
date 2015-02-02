@@ -1,6 +1,6 @@
 package hiber1;
 
-public class Contact {
+public class Contact{
 
 	private int id;
 	private String name;
@@ -30,6 +30,5 @@ public class Contact {
 		this.email = email;
 	}
 
-	
 
 }

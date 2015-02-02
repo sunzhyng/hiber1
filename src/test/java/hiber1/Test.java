@@ -1,6 +1,9 @@
 package hiber1;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,17 +23,23 @@ public class Test {
             SessionFactory sf = cfg.buildSessionFactory(serviceRegistry); 
 			
 			Session session = sf.openSession();
+			
+			/*
 			Transaction tx = session.beginTransaction();
-
 			for (int i = 0; i < 2; i++) {
-				Contact customer = new Contact();
+				User customer = new User();
 				customer.setName("customer" + i);
 				customer.setEmail("customer");
 				session.save(customer);
-				
 			}
-
 			tx.commit();
+			*/
+			Query query = session.createQuery("from hiber1.Contact");
+			List<Contact> list = query.list();      
+	        for(Contact object : list){      
+	           System.out.println(object.getName());      
+	        } 
+	        
 			session.close();
 			sf.close();
 
